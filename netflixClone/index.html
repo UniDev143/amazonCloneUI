@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix UI Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #141414;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 4%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #e50914;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #b3b3b3;
+        }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent),
+                       url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop') center/cover;
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #e50914;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .content-section {
+            padding: 20px 4%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .content-item {
+            min-width: 250px;
+            height: 150px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .content-item:hover {
+            transform: scale(1.1);
+        }
+
+        .content-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-item .title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .content-item:hover .title {
+            opacity: 1;
+        }
+
+        .content-item .ranking {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e50914;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">NETFLIX</div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">New & Popular</a>
+            <a href="#">My List</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Featured Title</h1>
+            <p>Watch this amazing movie that everyone is talking about. Available now in stunning 4K.</p>
+            <button class="btn">Play</button>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Trending Now</h2>
+        <div class="content-row">
+            <div class="content-item" data-title="The Shadow Realm" data-img="https://images.unsplash.com/photo-1616530940355-351fabd46501?q=80&w=250&auto=format&fit=crop" data-desc="A dark fantasy epic where heroes battle ancient evils." data-rating="8.5">
+                <img src="https://images.unsplash.com/photo-1616530940355-351fabd46501?q=80&w=250&auto=format&fit=crop" alt="Trending 1">
+                <span class="ranking">1</span>
+                <span class="title">The Shadow Realm</span>
+            </div>
+            <div class="content-item" data-title="Neon Nights" data-img="https://images.unsplash.com/photo-1585951237313-1979e4df7385?q=80&w=250&auto=format&fit=crop" data-desc="A cyberpunk thriller set in a futuristic city." data-rating="7.9">
+                <img src="https://images.unsplash.com/photo-1585951237313-1979e4df7385?q=80&w=250&auto=format&fit=crop" alt="Trending 2">
+                <span class="ranking">2</span>
+                <span class="title">Neon Nights</span>
+            </div>
+            <div class="content-item" data-title="Echoes of Time" data-img="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=250&auto=format&fit=crop" data-desc="A time-travel mystery unraveling history's secrets." data-rating="8.2">
+                <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=250&auto=format&fit=crop" alt="Trending 3">
+                <span class="ranking">3</span>
+                <span class="title">Echoes of Time</span>
+            </div>
+            <div class="content-item" data-title="Lost Horizon" data-img="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?q=80&w=250&auto=format&fit=crop" data-desc="An adventure to find a mythical land." data-rating="7.6">
+                <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?q=80&w=250&auto=format&fit=crop" alt="Trending 4">
+                <span class="ranking">4</span>
+                <span class="title">Lost Horizon</span>
+            </div>
+            <div class="content-item" data-title="Crimson Dawn" data-img="https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?q=80&w=250&auto=format&fit=crop" data-desc="A post-apocalyptic tale of survival." data-rating="8.0">
+                <img src="https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?q=80&w=250&auto=format&fit=crop" alt="Trending 5">
+                <span class="ranking">5</span>
+                <span class="title">Crimson Dawn</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Continue Watching</h2>
+        <div class="content-row">
+            <div class="content-item" data-title="The Silent Abyss" data-img="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=250&auto=format&fit=crop" data-desc="A psychological horror deep beneath the sea." data-rating="7.8">
+                <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=250&auto=format&fit=crop" alt="Continue 1">
+                <span class="title">The Silent Abyss</span>
+            </div>
+            <div class="content-item" data-title="Fires of Fate" data-img="https://images.unsplash.com/photo-1523301341995-891635ce1085?q=80&w=250&auto=format&fit=crop" data-desc="A fiery drama of love and betrayal." data-rating="8.1">
+                <img src="https://images.unsplash.com/photo-1523301341995-891635ce1085?q=80&w=250&auto=format&fit=crop" alt="Continue 2">
+                <span class="title">Fires of Fate</span>
+            </div>
+            <div class="content-item" data-title="Whispers in the Dark" data-img="https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=250&auto=format&fit=crop" data-desc="A chilling tale of unseen terrors." data-rating="7.5">
+                <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=250&auto=format&fit=crop" alt="Continue 3">
+                <span class="title">Whispers in the Dark</span>
+            </div>
+            <div class="content-item" data-title="Beyond the Veil" data-img="https://images.unsplash.com/photo-1505685296765-3a3e079318ee?q=80&w=250&auto=format&fit=crop" data-desc="A journey into the unknown." data-rating="8.3">
+                <img src="https://images.unsplash.com/photo-1505685296765-3a3e079318ee?q=80&w=250&auto=format&fit=crop" alt="Continue 4">
+                <span class="title">Beyond the Veil</span>
+            </div>
+            <div class="content-item" data-title="Eternal Storm" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=250&auto=format&fit=crop" data-desc="A saga of chaos and redemption." data-rating="7.9">
+                <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=250&auto=format&fit=crop" alt="Continue 5">
+                <span class="title">Eternal Storm</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.content-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.getAttribute('data-title');
+                const img = item.getAttribute('data-img');
+                const desc = item.getAttribute('data-desc');
+                const rating = item.getAttribute('data-rating');
+                const url = `movie-detail.html?title=${encodeURIComponent(title)}&img=${encodeURIComponent(img)}&desc=${encodeURIComponent(desc)}&rating=${encodeURIComponent(rating)}`;
+                window.location.href = url;
+            });
+        });
+    </script>
+</body>
+</html>

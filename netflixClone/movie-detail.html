@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail - Netflix UI Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #141414;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 4%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #e50914;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #b3b3b3;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 60vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-player img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+
+        .video-player .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .movie-details {
+            padding: 20px 4%;
+        }
+
+        .movie-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .movie-details .rating {
+            font-size: 1.2rem;
+            color: #46d369;
+            margin-bottom: 15px;
+        }
+
+        .movie-details .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .related-section {
+            padding: 20px 4%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .content-item {
+            min-width: 200px;
+            height: 120px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .content-item:hover {
+            transform: scale(1.1);
+        }
+
+        .content-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-item .title {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">NETFLIX</div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">New & Popular</a>
+            <a href="#">My List</a>
+        </nav>
+    </header>
+
+    <section class="video-player">
+        <img id="movie-img" src="" alt="Movie Background">
+        <div class="play-overlay">▶</div>
+    </section>
+
+    <section class="movie-details">
+        <h1 id="movie-title"></h1>
+        <div class="rating" id="movie-rating"></div>
+        <p class="description" id="movie-desc"></p>
+    </section>
+
+    <section class="related-section">
+        <h2 class="section-title">More Like This</h2>
+        <div class="content-row">
+            <div class="content-item">
+                <img src="https://images.unsplash.com/photo-1616530940355-351fabd46501?q=80&w=200&auto=format&fit=crop" alt="Related 1">
+                <span class="title">The Shadow Realm</span>
+            </div>
+            <div class="content-item">
+                <img src="https://images.unsplash.com/photo-1585951237313-1979e4df7385?q=80&w=200&auto=format&fit=crop" alt="Related 2">
+                <span class="title">Neon Nights</span>
+            </div>
+            <div class="content-item">
+                <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=200&auto=format&fit=crop" alt="Related 3">
+                <span class="title">Echoes of Time</span>
+            </div>
+            <div class="content-item">
+                <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?q=80&w=200&auto=format&fit=crop" alt="Related 4">
+                <span class="title">Lost Horizon</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const img = urlParams.get('img');
+        const desc = urlParams.get('desc');
+        const rating = urlParams.get('rating');
+
+        // Populate movie details
+        document.getElementById('movie-title').textContent = title || 'Unknown Title';
+        document.getElementById('movie-img').src = img || 'https://via.placeholder.com/1920x1080';
+        document.getElementById('movie-desc').textContent = desc || 'No description available.';
+        document.getElementById('movie-rating').textContent = `Rating: ${rating || 'N/A'} / 10`;
+    </script>
+</body>
+</html>
